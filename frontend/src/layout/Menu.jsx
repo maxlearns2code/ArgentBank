@@ -1,4 +1,4 @@
-import HeaderLogo from "../assets/argentBankLogo.png"
+import HeaderLogo from "/src/assets/argentBankLogo.png";
 
 const Menu = () => (
   <nav className="main-nav">

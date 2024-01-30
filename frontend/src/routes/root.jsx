@@ -1,11 +1,15 @@
-import { Outlet } from "react-router-dom"
-import Menu from  "../components/Menu"
+import { Outlet } from "react-router-dom";
+import Footer from "/src/layout/Footer";
+import Menu from "/src/layout/Menu";
 
-export default function Layout() { 
-    return (
-        <>
-            <Menu />
-                <Outlet />
-        </>
-    );
-}
+const Layout = () => {
+  return (
+    <>
+      <Menu />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
+export default Layout;
