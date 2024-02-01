@@ -1,3 +1,4 @@
+import Banner from "/src/components/Banner";
 import Feature from "/src/components/Feature";
 
 import iconChat from "/src/assets/icon-chat.png";
@@ -7,15 +8,7 @@ import iconSecurity from "/src/assets/icon-security.png";
 const Home = () => {
   return (
     <main>
-      <div className="hero">
-        <section className="hero-content">
-          <h2 className="sr-only">Promoted Content</h2>
-          <p className="subtitle">No fees.</p>
-          <p className="subtitle">No minimum deposit.</p>
-          <p className="subtitle">High interest rates.</p>
-          <p className="text">Open a savings account with Argent Bank today!</p>
-        </section>
-      </div>
+      <Banner />
       <section className="features">
         <h2 className="sr-only">Features</h2>
         <Feature

@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
-const Feature = ({ img, alt, title, text }) => (
+const Feature = (props) => (
   <div className="feature-item">
-    <img src={img} alt={alt} className="feature-icon" />
-    <h3 className="feature-item-title">{title}</h3>
-    <p>{text}</p>
+    <img src={props.img} alt={props.alt} className="feature-icon" />
+    <h3 className="feature-item-title">{props.title}</h3>
+    <p>{props.text}</p>
   </div>
 );
 

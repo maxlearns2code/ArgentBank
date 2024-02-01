@@ -1,9 +1,12 @@
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-@import "./sass/base/reset";
+@import "/src/sass/base/reset";
 
-@import "./sass/components/banner";
-@import "./sass/components/features";
+@import "/src/sass/components/banner";
+@import "/src/sass/components/features";
+@import "/src/sass/components/form";
 
-@import "./sass/layout/menu";
-@import "./sass/layout/footer";
+@import "/src/sass/layout/menu";
+@import "/src/sass/layout/footer";
+
+@import "/src/sass/pages/signin";
