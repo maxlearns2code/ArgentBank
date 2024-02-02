@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
 const Feature = (props) => (
-  <div className="feature-item">
-    <img src={props.img} alt={props.alt} className="feature-icon" />
-    <h3 className="feature-item-title">{props.title}</h3>
+  <div className="feature__item">
+    <img src={props.img} alt={props.alt} className="feature__icon" />
+    <h3 className="feature__item--title">{props.title}</h3>
     <p>{props.text}</p>
   </div>
 );

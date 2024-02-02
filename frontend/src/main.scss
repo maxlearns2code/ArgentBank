@@ -2,11 +2,14 @@
 
 @import "/src/sass/base/reset";
 
+@import "/src/sass/components/account";
 @import "/src/sass/components/banner";
-@import "/src/sass/components/features";
+@import "/src/sass/components/button";
+@import "/src/sass/components/feature";
 @import "/src/sass/components/form";
 
 @import "/src/sass/layout/menu";
 @import "/src/sass/layout/footer";
 
 @import "/src/sass/pages/signin";
+@import "/src/sass/pages/user";
