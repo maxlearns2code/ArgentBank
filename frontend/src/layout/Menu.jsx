@@ -13,7 +13,7 @@ const Menu = () => (
     <div>
       <a className="main-nav__item" href="/signin">
         <i className="fa fa-user-circle"></i>
-        Sign In
+        &nbsp;Sign In
       </a>
     </div>
   </nav>
