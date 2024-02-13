@@ -1,6 +1,31 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Account from "/src/components/Account";
+import { login } from "/src/redux/features/authSlice";
 
 const User = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  console.log(user);
+
+  const fetchProfile = async () => {
+    await fetch("http://localhost:3001/api/v1/user/profile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(login(data.body));
+      });
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
   return (
     <main className="main bg-dark">
       <div className="header">
