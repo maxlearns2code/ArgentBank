@@ -6,11 +6,8 @@ const Form = () => {
   
   // add function redirection by API
   async function redirection() {
-    let baliseUsername = document.getElementById("username");
-    let emailValue = baliseUsername.value;
-  
-    let balisePassword = document.getElementById("password");
-    let passwordValue = balisePassword.value;
+    let emailValue = document.getElementById("username").value;
+    let passwordValue = document.getElementById("password").value;
   
     // add fetch API to validate authentification
     const response = await fetch("http://localhost:3001/api/v1/user/login", {

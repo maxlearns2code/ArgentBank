@@ -6,7 +6,6 @@ import { login } from "/src/redux/features/authSlice";
 const User = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
 
   const fetchProfile = async () => {
     await fetch("http://localhost:3001/api/v1/user/profile", {
@@ -24,7 +23,7 @@ const User = () => {
 
   useEffect(() => {
     fetchProfile();
-  }, []);
+  }, [user]);
 
   return (
     <main className="main bg-dark">
@@ -32,7 +31,7 @@ const User = () => {
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {user && user.firstName}  {user && user.lastName}!
         </h1>
         <button className="edit-button">Edit Name</button>
       </div>

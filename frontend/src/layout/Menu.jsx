@@ -1,12 +1,16 @@
 import HeaderLogo from "/src/assets/argentBankLogo.png";
 import { Link } from "react-router-dom";
 import {useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/features/authSlice";
 
 const Menu = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
   const handleLogout = () => {
     sessionStorage.removeItem("authToken")
-    isLoggedIn(false);
+    dispatch(logout());
   };
 
   return (
@@ -23,7 +27,7 @@ const Menu = () => {
         <div>
         <Link className="main-nav__item" to="/user">
           <i className="fa fa-user-circle"></i>
-          &nbsp;Tony
+          &nbsp;{user.firstName}
         </Link>
         <Link className="main-nav__item" to="/" onClick={handleLogout}>
           <i className="fa fa-sign-out"></i>
