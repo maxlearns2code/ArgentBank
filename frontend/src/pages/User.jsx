@@ -19,6 +19,9 @@ const User = () => {
       .then((data) => {
         dispatch(login(data.body));
       });
+      if (!sessionStorage.getItem("authToken")) {
+        window.location = "/signin";
+      }
   };
 
   useEffect(() => {
