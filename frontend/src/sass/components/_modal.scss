@@ -1,0 +1,47 @@
+.modal__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  border: 1px solid #00bc77;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 250px;
+      padding: 5px;
+      font-size: 1.2rem;
+    }
+  }
+  &__btn {
+    border: none;
+    background-color: #00bc77;
+    color: #fff;
+    font-weight: bold;
+    margin: 16px;
+    padding: 5px;
+    font-size: 1.2rem;
+    width: 261px;
+  }
+}
+.close-btn {
+  position: absolute;
+  margin: 10px 0 0 260px;
+  background-color: #12002b;
+  border: none;
+  cursor: pointer;
+}

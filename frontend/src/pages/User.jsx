@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Modal from "../components/Modal";
 import Account from "/src/components/Account";
+import Icon from "/src/components/Icon";
 import { login } from "/src/redux/features/authSlice";
 
 const User = () => {
@@ -19,14 +21,23 @@ const User = () => {
       .then((data) => {
         dispatch(login(data.body));
       });
-      if (!sessionStorage.getItem("authToken")) {
-        window.location = "/signin";
-      }
+    if (!sessionStorage.getItem("authToken")) {
+      window.location = "/signin";
+    }
   };
 
   useEffect(() => {
     fetchProfile();
   }, [user]);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <main className="main bg-dark">
@@ -34,9 +45,19 @@ const User = () => {
         <h1>
           Welcome back
           <br />
-          {user && user.firstName}  {user && user.lastName}!
+          {user && user.firstName} {user && user.lastName}!
         </h1>
-        <button className="edit-button">Edit Name</button>
+        <button className="edit-button" onClick={openModal}>
+          Edit Name
+        </button>
+        {isOpen && (
+          <div className="modal__container">
+            <Modal />
+            <button className="close-btn" onClick={closeModal}>
+              <Icon name="close" />
+            </button>
+          </div>
+        )}
       </div>
       <h2 className="sr-only">Accounts</h2>
       <Account
