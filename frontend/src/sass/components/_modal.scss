@@ -8,16 +8,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
-  margin: 10px;
+  width: 330px;
+  height: 200px;
+  margin: 20px;
   border: 1px solid #00bc77;
   &__wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    margin: 10px;
     label {
       font-weight: bold;
     }
@@ -40,7 +40,7 @@
 }
 .close-btn {
   position: absolute;
-  margin: 10px 0 0 260px;
+  margin: 20px 0 0 290px;
   background-color: #12002b;
   border: none;
   cursor: pointer;

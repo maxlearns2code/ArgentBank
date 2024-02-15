@@ -21,6 +21,7 @@ const User = () => {
       .then((data) => {
         dispatch(login(data.body));
       });
+
     if (!sessionStorage.getItem("authToken")) {
       window.location = "/signin";
     }
@@ -28,7 +29,7 @@ const User = () => {
 
   useEffect(() => {
     fetchProfile();
-  }, [user]);
+  }, []);
 
   const [isOpen, setIsOpen] = useState(false);
 

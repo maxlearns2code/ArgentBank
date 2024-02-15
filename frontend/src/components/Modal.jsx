@@ -1,53 +1,42 @@
+import { useDispatch } from "react-redux";
+import { username } from "/src/redux/features/authSlice";
+
 const Modal = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    redirection();
+    editUsername();
+    closeModal();
   };
 
-  // add function redirection by API
-  async function redirection() {
-    let emailValue = document.getElementById("username").value;
-    let passwordValue = document.getElementById("password").value;
-
-    // add fetch API to validate authentification
-    const response = await fetch("http://localhost:3001/api/v1/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  const editUsername = async () => {
+    await fetch("http://localhost:3001/api/v1/user/profile", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+      },
       body: JSON.stringify({
-        email: emailValue,
-        password: passwordValue,
+        userName: document.getElementById("username").value,
       }),
-    });
-
-    if (response.ok) {
-      //save token
-      const result = await response.json();
-      console.log(result.body.token);
-      sessionStorage.setItem("authToken", result.body.token);
-      //redirection
-      window.location = "/user";
-    } else {
-      //alert
-      const alert = document.querySelector(".alert");
-      alert.style.display = null;
-      const alertBtn = document.querySelector(".alert__btn");
-      console.log(alertBtn);
-      alertBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        window.location = "/signin";
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(username(data.body.userName));
+        console.log(username(data.body.userName));
       });
-    }
-  }
+  };
+
+  const closeModal = () => {
+    window.location = "/user";
+  };
   return (
     <>
       <form className="modal" onSubmit={handleSubmit}>
         <div className="modal__wrapper">
-          <label htmlFor="firstname">Firstname</label>
-          <input type="text" id="firstname" />
-        </div>
-        <div className="modal__wrapper">
-          <label htmlFor="lastname">Lastname</label>
-          <input type="text" id="lastname" />
+          <label htmlFor="username">Username</label>
+          <input type="text" id="username" />
         </div>
         <button className="modal__btn" type="submit">
           Send
