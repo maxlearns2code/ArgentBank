@@ -1,4 +1,4 @@
-import HeaderLogo from "/src/assets/argentBankLogo.png";
+import HeaderLogo from "/src/assets/argentBankLogo.webp";
 import { Link } from "react-router-dom";
 import {useSelector} from "react-redux";
 import { useDispatch } from "react-redux";

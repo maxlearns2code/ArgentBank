@@ -1,9 +1,9 @@
 import Banner from "/src/components/Banner";
 import Feature from "/src/components/Feature";
 
-import iconChat from "/src/assets/icon-chat.png";
-import iconMoney from "/src/assets/icon-money.png";
-import iconSecurity from "/src/assets/icon-security.png";
+import iconChat from "/src/assets/icon-chat.webp";
+import iconMoney from "/src/assets/icon-money.webp";
+import iconSecurity from "/src/assets/icon-security.webp";
 
 const Home = () => {
   return (
