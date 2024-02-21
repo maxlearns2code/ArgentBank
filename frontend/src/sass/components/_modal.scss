@@ -9,39 +9,40 @@
   justify-content: center;
   align-items: center;
   width: 330px;
-  height: 200px;
+  height: 330px;
   margin: 20px;
-  border: 1px solid #00bc77;
   &__wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
     margin: 10px;
     label {
       font-weight: bold;
+      margin-right: 20px;
     }
     input {
-      width: 250px;
+      width: 150px;
       padding: 5px;
       font-size: 1.2rem;
     }
   }
-  &__btn {
-    border: none;
-    background-color: #00bc77;
-    color: #fff;
-    font-weight: bold;
-    margin: 16px;
-    padding: 5px;
-    font-size: 1.2rem;
-    width: 261px;
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    &--btn {
+      border: none;
+      background-color: #00bc77;
+      color: #fff;
+      font-weight: bold;
+      margin-top: 16px;
+      padding: 5px;
+      font-size: 1.2rem;
+      width: 150px;
+      height: 50px;
+      cursor: pointer;
+    }
   }
-}
-.close-btn {
-  position: absolute;
-  margin: 20px 0 0 290px;
-  background-color: #12002b;
-  border: none;
-  cursor: pointer;
 }

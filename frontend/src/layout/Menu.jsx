@@ -27,7 +27,7 @@ const Menu = () => {
         <div>
         <Link className="main-nav__item" to="/user">
           <i className="fa fa-user-circle"></i>
-          &nbsp;{user.firstName}
+          &nbsp;{user.userName}
         </Link>
         <Link className="main-nav__item" to="/" onClick={handleLogout}>
           <i className="fa fa-sign-out"></i>

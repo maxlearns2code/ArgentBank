@@ -2,42 +2,29 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../components/Modal";
 import Account from "/src/components/Account";
-import Icon from "/src/components/Icon";
 import { login } from "/src/redux/features/authSlice";
+import { fetchProfile } from "../lib/data";
 
 const User = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
-  const fetchProfile = async () => {
-    await fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(login(data.body));
-      });
-
-    if (!sessionStorage.getItem("authToken")) {
-      window.location = "/signin";
+  const getProfile = async () => {
+    const response = await fetchProfile();
+    console.log(response);
+    if (response.status === 200) {
+      dispatch(login(response.body));
     }
   };
 
   useEffect(() => {
-    fetchProfile();
+    getProfile();
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
     setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
   };
 
   return (
@@ -54,9 +41,6 @@ const User = () => {
         {isOpen && (
           <div className="modal__container">
             <Modal />
-            <button className="close-btn" onClick={closeModal}>
-              <Icon name="close" />
-            </button>
           </div>
         )}
       </div>

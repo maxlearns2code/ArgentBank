@@ -1,8 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { username } from "/src/redux/features/authSlice";
+import { fetchUsername } from "../lib/data";
 
 const Modal = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,36 +13,67 @@ const Modal = () => {
   };
 
   const editUsername = async () => {
-    await fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
-      },
-      body: JSON.stringify({
-        userName: document.getElementById("username").value,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(username(data.body.userName));
-        console.log(username(data.body.userName));
-      });
+    const response = await fetchUsername();
+    console.log(response);
+    if (response.status === 200) {
+      dispatch(username(response.body.userName));
+    }
   };
 
   const closeModal = () => {
     window.location = "/user";
   };
+  const handleCancel = () => {
+    closeModal();
+  };
+
   return (
     <>
-      <form className="modal" onSubmit={handleSubmit}>
+      <form className="modal">
+        <h2 className="modal__title">Edit user info</h2>
         <div className="modal__wrapper">
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" />
+          <label htmlFor="username" className="label-form">
+            User name :
+          </label>
+          <input
+            className="input_name_user"
+            type="text"
+            id="username"
+            defaultValue={user && user.userName}
+          />
         </div>
-        <button className="modal__btn" type="submit">
-          Send
-        </button>
+        <div className="modal__wrapper">
+          <label htmlFor="firstname" className="label-form">
+            First name :
+          </label>
+          <input
+            className="input_name"
+            type="text"
+            id="firstname"
+            defaultValue={user && user.firstName}
+            disabled
+          />
+        </div>
+        <div className="modal__wrapper">
+          <label htmlFor="lastName" className="label-form">
+            Last name :
+          </label>
+          <input
+            className="input_name"
+            type="text"
+            id="lastname"
+            defaultValue={user && user.lastName}
+            disabled
+          />
+        </div>
+        <div className="modal__buttons">
+          <button className="modal__buttons--btn" type="submit" onClick={handleSubmit}>
+            Save
+          </button>
+          <button className="modal__buttons--btn" type="submit" onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
       </form>
     </>
   );
