@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { username } from "/src/redux/features/authSlice";
 import { fetchUsername } from "../lib/data";
+import { Form } from "react-router-dom";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const Modal = () => {
 
   return (
     <>
-      <form className="modal">
+      <Form className="modal">
         <h2 className="modal__title">Edit user info</h2>
         <div className="modal__wrapper">
           <label htmlFor="username" className="label-form">
@@ -74,7 +75,7 @@ const Modal = () => {
             Cancel
           </button>
         </div>
-      </form>
+      </Form>
     </>
   );
 };

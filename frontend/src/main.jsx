@@ -6,8 +6,8 @@ import store from "/src/redux/store/store";
 import "./main.scss";
 import ErrorPage from "/src/pages/Errorpage";
 import Home from "/src/pages/Home";
-import Signin from "/src/pages/Signin";
-import User from "/src/pages/user";
+import Signin, {action as signinAction} from "/src/pages/Signin";
+import User, {loader as userLoader} from "/src/pages/user";
 import Root from "/src/routes/root";
 
 const router = createBrowserRouter([
@@ -23,10 +23,12 @@ const router = createBrowserRouter([
       {
         path: "/signin",
         element: <Signin />,
+        action: signinAction,
       },
       {
         path: "/user",
         element: <User />,
+        loader: userLoader,
       },
     ],
   },

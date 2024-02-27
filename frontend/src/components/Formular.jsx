@@ -1,13 +1,8 @@
-import { redirection } from "../lib/data";
+import { Form } from "react-router-dom";
 
-const Form = () => {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    redirection();
-  };
-
+const Formular = () => {
   return (
-    <form onSubmit={handleSubmit}>
+    <Form method="post">
       <div className="input-wrapper">
         <label htmlFor="username">Username</label>
         <input type="text" id="username" />
@@ -23,8 +18,8 @@ const Form = () => {
       <button className="sign-in-button" type="submit">
         Sign In
       </button>
-    </form>
+    </Form>
   );
 };
 
-export default Form;
+export default Formular;

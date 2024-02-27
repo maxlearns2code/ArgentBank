@@ -7,22 +7,7 @@ export async function redirection() {
       password: document.getElementById("password").value,
     }),
   });
-
-  if (response.ok) {
-    const result = await response.json();
-    console.log(result.body.token);
-    sessionStorage.setItem("authToken", result.body.token);
-    window.location = "/user";
-  } else {
-    const alert = document.querySelector(".alert");
-    alert.style.display = null;
-    const alertBtn = document.querySelector(".alert__btn");
-    console.log(alertBtn);
-    alertBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      window.location = "/signin";
-    });
-  }
+  return response;
 }
 
 export const fetchProfile = async () => {

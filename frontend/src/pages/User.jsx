@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../components/Modal";
+import { fetchProfile } from "../lib/data";
 import Account from "/src/components/Account";
 import { login } from "/src/redux/features/authSlice";
-import { fetchProfile } from "../lib/data";
+import {useLoaderData} from "react-router-dom";
+
+export async function loader() {
+  const response = await fetchProfile();
+  return {response};
+}
 
 const User = () => {
+  const {response} = useLoaderData();
+  console.log(response);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
-  const getProfile = async () => {
-    const response = await fetchProfile();
-    console.log(response);
+  const getProfile = () => {
     if (response.status === 200) {
       dispatch(login(response.body));
     }
